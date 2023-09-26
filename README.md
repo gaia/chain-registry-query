@@ -34,3 +34,5 @@ usage: chain-registry-query.py [-h] [--max_results MAX_RESULTS] [--polkachu] [--
 ### To install
 `pip install -r requirements.txt`
 
+### Usage
+`./chain-registry-query.py osmosis rpc --max_results 30 --no_fileout`
