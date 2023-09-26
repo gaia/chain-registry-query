@@ -1,0 +1,28 @@
+# Chain Registry Query Tool
+
+## Description
+This is a command-line utility for querying the Cosmos Chain Registry to test for liveliness the listed resources which are then sorted by ping time on lowest latency to your location.
+
+## Dependencies
+- requests
+- telnetlib
+- ping
+- argparse
+- json
+- sys
+- os
+- PrettyTable
+
+## Usage Example
+usage: chain-registry-query.py [-h] [--max_results MAX_RESULTS] [--polkachu] [--no_fileout] chain type
+
+positional arguments:
+  chain                 the name of the chain
+  type                  the type of peers (persistent_peers, seeds, rpc, rest, grpc)
+
+options:
+  -h, --help            show this help message and exit
+  --max_results MAX_RESULTS
+                        the maximum number of results to display (still tests all results)
+  --polkachu            use the polkachu API instead of the registry
+  --no_fileout          do not write successful seeds and persistent_peers results to a file
