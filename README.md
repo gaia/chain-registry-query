@@ -20,6 +20,7 @@ Already available by default:
 
 ### Usage Example
 usage: chain-registry-query.py [-h] chain type [--max_results MAX_RESULTS] [--polkachu] [--no_fileout]
+
 `./chain-registry-query.py osmosis rpc --max_results 30 --no_fileout`
 
 **positional arguments**:
