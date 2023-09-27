@@ -3,7 +3,8 @@
 ### Description
 This is a command-line utility for querying the [Cosmos Chain Registry](https://github.com/cosmos/chain-registry/ "Cosmos Chain Registry") to test the listed resources for liveliness. The live results are then sorted by ping time on lowest latency to your location. The failed resources are also listed, along with the reason for failure.
 
-[![Help](https://i.imgur.com/qHnHcwH.png "Help")](https://i.imgur.com/qHnHcwH.png "Help")
+[![Help](https://i.imgur.com/quplTNR.png "Help")](https://i.imgur.com/quplTNR.png "Help")
+[![Example Output](https://i.imgur.com/TdGPmqr.png "Example Output")](https://i.imgur.com/TdGPmqr.png "Example Output")
 
 ### Dependencies
 - requests
@@ -25,7 +26,7 @@ usage: chain-registry-query.py [-h] chain type [--max_results MAX_RESULTS] [--po
 
 **positional arguments**:
 -   `chain`                 the name of the chain
--   `type`                  the type of peers (persistent_peers, seeds, rpc, rest, grpc)
+-   `type`                  the type of resource to query (persistent_peers, seeds, rpc, rest, grpc)
 
 **optional**:
 -   `-h, --help`            show this help message and exit

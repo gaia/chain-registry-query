@@ -24,7 +24,7 @@ print(banner)
 # Parse the command-line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("chain", help="the name of the chain")
-parser.add_argument("type", help="the type of peers (seeds, persistent_peers, rpc, rest, grpc)")
+parser.add_argument("type", help="the type of resource to query (seeds, persistent_peers, rpc, rest, grpc)")
 parser.add_argument("--max_results", type=int, help="the maximum number of results to display (still tests all results)")
 parser.add_argument("--polkachu", action="store_true", help="use the polkachu API instead of the registry (alternate source of persistent peers)")
 parser.add_argument("--no_fileout", action="store_true", help="do not create a file with successful seeds and persistent_peers results (ready to paste in config.toml)")
