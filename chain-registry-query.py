@@ -109,7 +109,7 @@ def print_out_apis(successful_entries, failed_entries):
     # No file output for APIs
 
 def print_out_apis_rpc(successful_entries, failed_entries):
-    print(f"\r\n\n========== RPC servers are tested via curl then ping /status.")
+    print(f"\r\n\n========== RPC servers are tested via curl /status then ping.")
     # address, port, ping_time, tx_index, catching_up
     # Sort the successful entries by ping time
     successful_entries.sort(key=lambda x: x[2])

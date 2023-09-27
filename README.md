@@ -7,7 +7,7 @@ This is a command-line utility for querying the [Cosmos Chain Registry](https://
 [![Help](https://i.imgur.com/quplTNR.png "Help")](https://i.imgur.com/quplTNR.png "Help")
 
 ### Example Output
-[![Example Output](https://i.imgur.com/TdGPmqr.png "Example Output")](https://i.imgur.com/TdGPmqr.png "Example Output")
+[![Example Output](https://i.imgur.com/1vfWTRJ.png "Example Output")](https://i.imgur.com/1vfWTRJ.png "Example Output")
 
 ### Dependencies
 - requests
