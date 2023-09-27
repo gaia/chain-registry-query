@@ -29,9 +29,9 @@ usage: chain-registry-query.py [-h] chain type [--max_results MAX_RESULTS] [--po
 
 **optional**:
 -   `-h, --help`            show this help message and exit
--   `--max_results MAX_RESULTS`       the maximum number of results to display (still tests all results)
--   `--polkachu`            use the polkachu API instead of the registry
--   `--no_fileout`          do not write successful seeds and persistent_peers results to a file
+-   `--max_results MAX_RESULTS`       the maximum number of results to display (still tests all results) 
+-   `--polkachu`            use the polkachu API instead of the registry (alternate source of persistent peers)
+-   `--no_fileout`          do not create a file with successful seeds and persistent_peers results (ready to paste in config.toml)
 
 ### To install
 `pip install -r requirements.txt`
