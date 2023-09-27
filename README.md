@@ -3,7 +3,10 @@
 ### Description
 This is a command-line utility for querying the [Cosmos Chain Registry](https://github.com/cosmos/chain-registry/ "Cosmos Chain Registry") to test the listed resources for liveliness. The live results are then sorted by ping time on lowest latency to your location. The failed resources are also listed, along with the reason for failure.
 
+### Help
 [![Help](https://i.imgur.com/quplTNR.png "Help")](https://i.imgur.com/quplTNR.png "Help")
+
+### Example Output
 [![Example Output](https://i.imgur.com/TdGPmqr.png "Example Output")](https://i.imgur.com/TdGPmqr.png "Example Output")
 
 ### Dependencies
