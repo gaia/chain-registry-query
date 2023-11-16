@@ -18,7 +18,7 @@ banner = """
          \____/\_| \_| \_/\_\
 
        Chain Registry Query Tool
-    v0.1.0 | Author: github.com/gaia
+    v0.1.1 | Author: github.com/gaia
 """
 print(banner)
 
