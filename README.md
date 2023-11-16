@@ -21,6 +21,7 @@ Already available by default:
 - json
 - sys
 - os
+- socket
 
 
 ### Usage Example

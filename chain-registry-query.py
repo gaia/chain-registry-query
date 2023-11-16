@@ -7,6 +7,7 @@ import json
 import sys
 import os
 from prettytable import PrettyTable
+import socket
 
 banner = """
          _____ ______  _____
@@ -47,13 +48,20 @@ check_internet_connectivity()
 
 # Function to perform a ping test
 def ping_test(address):
-    return ping(address, timeout=0.5) or 0
+    try:
+        return ping(address, timeout=0.5) or 0
+    except socket.gaierror:
+        print(f"Could not resolve {address}. Skipping...")
+        raise
 # Function to perform a telnet test
 def telnet_test(address, port):
     # TODO: A more use case specific test routine for seeds, persistent_peers, rest and grpc. Already implemented for rpc.
     try:
         with telnetlib.Telnet(address, port, timeout=0.5) as connection:
             return True
+    except socket.gaierror:
+        print(f"Could not resolve {address}. Skipping...")
+        raise
     except:
         return False
 
@@ -161,8 +169,11 @@ if args.polkachu:
             node_id, address_port = entry.split("@")
             address, port = address_port.split(":")
             # Perform the tests
-            telnet_success = telnet_test(address, port)
-            ping_time = ping_test(address)
+            try:
+                telnet_success = telnet_test(address, port)
+                ping_time = ping_test(address)
+            except socket.gaierror:
+                continue
             # If the telnet test was successful, add the entry to the list
             if telnet_success:
                 successful_entries.append((node_id, address, port, round(ping_time * 1000, 2)))
@@ -190,8 +201,11 @@ else:
                 address_port = peer["address"]
                 address, port = address_port.split(":")
                 # Perform the tests
-                telnet_success = telnet_test(address, port)
-                ping_time = ping_test(address)
+                try:
+                    telnet_success = telnet_test(address, port)
+                    ping_time = ping_test(address)
+                except socket.gaierror:
+                    continue
                 # If the telnet test was successful, add the entry to the list
                 if telnet_success:
                     successful_entries.append((node_id, address, port, round(ping_time * 1000, 2)))
@@ -212,14 +226,17 @@ else:
                     if ":" in rest:
                         address, port = rest.split(":")
                     else:
-                        address = rest
+                        address = rest.rstrip('/')
                         if protocol == "http":
                             port = "80"
                         elif protocol == "https":
                             port = "443"
                 # Perform the tests
-                telnet_success = telnet_test(address, port)
-                ping_time = ping_test(address)
+                try:
+                    telnet_success = telnet_test(address, port)
+                    ping_time = ping_test(address)
+                except socket.gaierror:
+                    continue
                 # If the telnet test was successful, add the entry to the list
                 if telnet_success:
                     successful_entries.append((address, port, round(ping_time * 1000, 2)))
@@ -237,7 +254,7 @@ else:
                 if ":" in rest:
                     address, port = rest.split(":")
                 else:
-                    address = rest
+                    address = rest.rstrip('/')
                     if protocol == "http":
                         port = "80"
                     elif protocol == "https":
@@ -260,3 +277,4 @@ else:
                 else:
                     failed_entries.append((address, port, "No response"))
             print_out_apis_rpc(successful_entries, failed_entries)
+
