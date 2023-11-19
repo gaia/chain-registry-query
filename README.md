@@ -4,10 +4,10 @@
 This is a command-line utility for querying the [Cosmos Chain Registry](https://github.com/cosmos/chain-registry/ "Cosmos Chain Registry") to test the listed resources for liveliness. The live results are then sorted by ping time on lowest latency to your location. The failed resources are also listed, along with the reason for failure.
 
 ### Help
-[![Help](https://i.imgur.com/HQrltwl.png "Help")](https://i.imgur.com/HQrltwl.png "Help")
+[![Help](https://i.imgur.com/QVLanfU.png "Help")](https://i.imgur.com/QVLanfU.png "Help")
 
 ### Example Output
-`./chain-registry-query.py stargaze rpc --max_results 10 --no_fileout`
+`./chain-registry-query.py stargaze rpc --max_results 10`
 [![Example Output](https://i.imgur.com/r7mMteI.png "Example Output")](https://i.imgur.com/r7mMteI.png "Example Output")
 
 ### Dependencies
