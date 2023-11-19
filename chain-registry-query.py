@@ -158,7 +158,7 @@ def print_out_apis_rpc(successful_entries, failed_entries):
        successful_entries = successful_entries[:args.max_results]
    # Print the successful entries in table format
    table_success = PrettyTable()
-   table_success.field_names = ["ADDRESS:PORT", "PING TIME (ms)", "TX INDEXING", "CATCHING UP", "VOTING POWER", "WEBSOCKETS?"]
+   table_success.field_names = ["ADDRESS:PORT", "PING TIME (ms)", "TX INDEXING", "CATCHING UP", "VOTING POWER", "WEBSOCKETS"]
    for address, port, ping_time, tx_index, catching_up, voting_power, websocket_status in successful_entries:
        table_success.add_row([f"{address}:{port}", ping_time, tx_index, catching_up, voting_power, websocket_status])
    print("\r\nSuccess ======================================================================================\r\n Ping reply time 0 means the server did not reply to the ping.\r\n You might want to manually traceroute these servers to find the closest.")
