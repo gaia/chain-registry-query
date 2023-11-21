@@ -8,7 +8,7 @@ This is a command-line utility for querying the [Cosmos Chain Registry](https://
 
 ### Example Output
 `./chain-registry-query.py stargaze rpc --max_results 10`
-[![Example Output](https://i.imgur.com/r7mMteI.png "Example Output")](https://i.imgur.com/r7mMteI.png "Example Output")
+[![Example Output](https://i.imgur.com/oD9LwKx.png "Example Output")](https://i.imgur.com/oD9LwKx.png "Example Output")
 
 ### Dependencies
 - requests
