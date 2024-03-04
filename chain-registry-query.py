@@ -11,6 +11,7 @@ import socket
 import websockets
 import asyncio
 import re
+import subprocess
 
 banner = """
          _____ ______  _____
@@ -248,31 +249,32 @@ else:
                 message = f"Testing {api['address']}"
                 print(f"\r{message:160}", end="")
                 sys.stdout.flush()
-                if args.type == "grpc":
-                    # grpc format: "example.com:11290"
-                    address, port = api["address"].split(":")
-                else:
-                    # rpc and rest format: "https://example.com:443"
+                if "://" in api["address"]:
+                    # grpc format with protocol: "http://example.com:11290" or "https://example.com:11290"
                     protocol, rest = api["address"].split("://")
                     if ":" in rest:
                         address, port = rest.split(":")
                     else:
-                        address = rest.rstrip('/')
+                        address = rest
                         if protocol == "http":
                             port = "80"
                         elif protocol == "https":
                             port = "443"
-                # Perform the tests
-                try:
-                    telnet_success = telnet_test(address, port)
-                    ping_time = ping_test(address)
-                except socket.gaierror:
-                    continue
-                # If the telnet test was successful, add the entry to the list
-                if telnet_success:
-                    successful_entries.append((address, port, round(ping_time * 1000, 2)))
                 else:
-                    failed_entries.append((address, port, "Telnet"))
+                    # grpc format without protocol: "juno.grpc.m.stavr.tech:504" or "juno.grpc.m.stavr.tech"
+                    if ":" in api["address"]:
+                        address, port = api["address"].split(":")
+                    else:
+                        address = api["address"]
+                        port = "9090" # Default port for grpc without specified port
+                # Perform the grpcurl test
+                grpc_server = f"{address}:{port}"
+                test_command = f'grpcurl -plaintext -connect-timeout 2 -H "accept: application/json" {grpc_server} list'
+                try:
+                    subprocess.run(test_command, shell=True, check=True, text=True, capture_output=True)
+                    successful_entries.append((address, port, round(ping_test(address) * 1000, 2)))
+                except subprocess.CalledProcessError:
+                    failed_entries.append((address, port, "GRPC Server Down"))
             print_out_apis(successful_entries, failed_entries)
         else:
             # Query the RPC
