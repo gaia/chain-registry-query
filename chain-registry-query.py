@@ -310,7 +310,7 @@ else:
                         else:
                             voting_power = "0"
                     else:
-                        print(f"Error {rpc_response.status_code} for {api['address']}. Skipping...")
+                        print(f"Error {rpc_response.status_code}. Skipping...")
                         failed_entries.append((address, port, f"Error {rpc_response.status_code}"))
                         continue
                 except Exception as e: # Handle JSON decoding error and other possible exceptions
