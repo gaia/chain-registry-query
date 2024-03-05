@@ -310,13 +310,9 @@ else:
                         else:
                             voting_power = "0"
                     else:
-                        print(f"Error {rpc_response.status_code} for {api['address']}. Skipping...")
                         failed_entries.append((address, port, f"Error {rpc_response.status_code}"))
-                        continue
-                except Exception as e: # Handle JSON decoding error and other possible exceptions
-                    print(f"Error {rpc_response.status_code} for {api['address']}. Skipping...")
+                except Exception as e:  # Handle JSON decoding error and other possible exceptions
                     failed_entries.append((address, port, f"Error {rpc_response.status_code}"))
-                    continue
                 # Perform the ping test
                 ping_time = ping_test(address) or 0
                 # Perform the WebSocket test
@@ -324,3 +320,4 @@ else:
                 # Add the results to the successful_entries list
                 successful_entries.append((address, port, round(ping_time * 1000, 2), tx_index, catching_up, voting_power, websocket_status))
             print_out_apis_rpc(successful_entries, failed_entries)
+
